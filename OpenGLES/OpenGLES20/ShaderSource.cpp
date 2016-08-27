@@ -18,6 +18,7 @@
 #include "ShaderFile.h"
 #include "OpenGLESUtil.h"
 #include "OpenGLESConfig.h"
+#include <stdlib.h>
 
 using namespace OpenGLES::OpenGLES2;
 
@@ -44,11 +45,11 @@ bool ShaderSource::expandSource()
 	long pos = file->tell();
 	file->seek(0, SEEK_SET);
 
-	int n = file->read(tmp, 1, pos);
+	size_t n = file->read(tmp, 1, pos);
 	tmp[n] = '\0';
 	file->close();
 
-	int additionalSourceLength = additionalSource.size();
+	size_t additionalSourceLength = additionalSource.size();
 	char *sourceTmp = (char *)malloc(sizeof(char) * n + additionalSourceLength + 1);
 	if (sourceTmp == NULL)
 	{

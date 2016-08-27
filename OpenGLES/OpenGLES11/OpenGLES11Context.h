@@ -17,7 +17,7 @@
 #ifndef OpenGLES11Context_H_
 #define OpenGLES11Context_H_
 
-#include "OpenGLESContext.h"
+#include "../OpenGLESContext.h"
 
 namespace OpenGLES {
 	namespace OpenGLES1 {

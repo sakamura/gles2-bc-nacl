@@ -17,7 +17,7 @@
 #ifndef OpenGLES2Context_H_
 #define OpenGLES2Context_H_
 
-#include "OpenGLESContext.h"
+#include "../OpenGLESContext.h"
 #include "MatrixStack.h"
 #include "OpenGLESState.h"
 

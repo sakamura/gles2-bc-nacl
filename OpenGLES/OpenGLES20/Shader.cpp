@@ -19,6 +19,7 @@
 #include "OpenGLESConfig.h"
 #include "ShaderSource.h"
 #include "ShaderFile.h"
+#include <stdlib.h>
 
 using namespace OpenGLES::OpenGLES2;
 
@@ -54,7 +55,7 @@ GLuint Shader::compile()
 	GLint compiled;
 	glGetShaderiv(id, GL_COMPILE_STATUS, &compiled);
 
-	if (!compiled || OpenGLESConfig::DEBUG)
+	if (!compiled || OpenGLESConfig::IS_DEBUG)
 	{
 		GLint infoLength;
 		glGetShaderiv(id, GL_INFO_LOG_LENGTH, &infoLength);
@@ -114,7 +115,7 @@ bool Shader::readShaderSource()
 		shaderSources[i] = convertStringToChar(sources[i]->getSource());
 	}
 
-	glShaderSource(id, sources.size(), (const char **)shaderSources, NULL);
+	glShaderSource(id, (GLsizei)sources.size(), (const char **)shaderSources, NULL);
 
 	for (size_t i = 0; i < sources.size(); i++)
 	{

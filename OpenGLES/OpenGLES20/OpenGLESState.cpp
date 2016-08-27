@@ -101,13 +101,19 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::POSITION_ENABLED && UniformId::POSITION_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::POSITION_ENABLED] = new UniformState<bool>(shaders[ShaderId::MAIN_VERTEX_SHADER], "POSITION_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::POSITION_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::COLOR_ENABLED && UniformId::COLOR_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::COLOR_ENABLED] = new UniformState<bool>(shaders[ShaderId::MAIN_VERTEX_SHADER], "COLOR_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::COLOR_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	
 	UniformState<bool> *texcoord0Enabled = 0;
@@ -116,7 +122,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		texcoord0Enabled->addDefineShaderFile(shaders[ShaderId::TEXTURE0_FRAGMENT_SHADER]);
 		uniforms[UniformId::TEXCOORD0_ENABLED] = texcoord0Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXCOORD0_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXCOORD0_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE_VERTEX_SHADER]);
 	uniforms[UniformId::TEXCOORD0_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE0_VERTEX_SHADER]);
@@ -127,7 +136,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		texcoord1Enabled->addDefineShaderFile(shaders[ShaderId::TEXTURE1_FRAGMENT_SHADER]);
 		uniforms[UniformId::TEXCOORD1_ENABLED] = texcoord1Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXCOORD1_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXCOORD1_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE_VERTEX_SHADER]);
 	uniforms[UniformId::TEXCOORD1_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE1_VERTEX_SHADER]);
@@ -138,7 +150,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		texcoord2Enabled->addDefineShaderFile(shaders[ShaderId::TEXTURE2_FRAGMENT_SHADER]);
 		uniforms[UniformId::TEXCOORD2_ENABLED] = texcoord2Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXCOORD2_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXCOORD2_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE_VERTEX_SHADER]);
 	uniforms[UniformId::TEXCOORD2_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE2_VERTEX_SHADER]);
@@ -146,19 +161,28 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::TEXTURE0_MATRIX_ENABLED && UniformId::TEXTURE0_MATRIX_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::TEXTURE0_MATRIX_ENABLED] = new UniformState<bool>(shaders[ShaderId::TEXTURE_VERTEX_SHADER], "TEXTURE0_MATRIX_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE0_MATRIX_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::TEXTURE1_MATRIX_ENABLED && UniformId::TEXTURE1_MATRIX_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::TEXTURE1_MATRIX_ENABLED] = new UniformState<bool>(shaders[ShaderId::TEXTURE_VERTEX_SHADER], "TEXTURE1_MATRIX_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE1_MATRIX_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::TEXTURE2_MATRIX_ENABLED && UniformId::TEXTURE2_MATRIX_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::TEXTURE2_MATRIX_ENABLED] = new UniformState<bool>(shaders[ShaderId::TEXTURE_VERTEX_SHADER], "TEXTURE2_MATRIX_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE2_MATRIX_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	
 	UniformState<bool> *lightingEnabled = 0;
@@ -167,7 +191,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		lightingEnabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::LIGHTING_ENABLED] = lightingEnabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::LIGHTING_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::LIGHTING_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::LIGHTING_VERTEX_SHADER]);
 	uniforms[UniformId::LIGHTING_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::LIGHTING_FRAGMENT_SHADER]);
@@ -175,7 +202,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::LIGHT_MODEL_LOCAL_VIEWER_ENABLED && UniformId::LIGHT_MODEL_LOCAL_VIEWER_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::LIGHT_MODEL_LOCAL_VIEWER_ENABLED] = new UniformState<bool>(shaders[ShaderId::MAIN_VERTEX_SHADER], "LIGHT_MODEL_LOCAL_VIEWER_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::LIGHT_MODEL_LOCAL_VIEWER_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::LIGHT_MODEL_LOCAL_VIEWER_ENABLED]->setFather(lightingEnabled);
 	
@@ -185,7 +215,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		lightModelTwoSideEnabled->addDefineShaderFile(shaders[ShaderId::LIGHTING_FRAGMENT_SHADER]);
 		uniforms[UniformId::LIGHT_MODEL_TWO_SIDE_ENABLED] = lightModelTwoSideEnabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::LIGHT_MODEL_TWO_SIDE_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::LIGHT_MODEL_TWO_SIDE_ENABLED]->setFather(lightingEnabled);
 	
@@ -195,7 +228,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		light0Enabled->addDefineShaderFile(shaders[ShaderId::LIGHTING_PER_FRAGMENT_FRAGMENT_SHADER]);
 		uniforms[UniformId::LIGHT0_ENABLED] = light0Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::LIGHT0_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::LIGHT0_ENABLED]->setFather(lightingEnabled);
 	
@@ -205,7 +241,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		light1Enabled->addDefineShaderFile(shaders[ShaderId::LIGHTING_PER_FRAGMENT_FRAGMENT_SHADER]);
 		uniforms[UniformId::LIGHT1_ENABLED] = light1Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::LIGHT1_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::LIGHT1_ENABLED]->setFather(lightingEnabled);
 	
@@ -215,28 +254,40 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		light2Enabled->addDefineShaderFile(shaders[ShaderId::LIGHTING_PER_FRAGMENT_FRAGMENT_SHADER]);
 		uniforms[UniformId::LIGHT2_ENABLED] = light2Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::LIGHT2_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::LIGHT2_ENABLED]->setFather(lightingEnabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::NORMAL_ENABLED && UniformId::NORMAL_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::NORMAL_ENABLED] = new UniformState<bool>(shaders[ShaderId::MAIN_VERTEX_SHADER], "NORMAL_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::NORMAL_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::NORMAL_ENABLED]->setFather(lightingEnabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::RESCALE_NORMAL_ENABLED && UniformId::RESCALE_NORMAL_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::RESCALE_NORMAL_ENABLED] = new UniformState<bool>(shaders[ShaderId::MAIN_VERTEX_SHADER], "RESCALE_NORMAL_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::RESCALE_NORMAL_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::RESCALE_NORMAL_ENABLED]->setFather(lightingEnabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_BOOL <= UniformId::NORMALIZE_ENABLED && UniformId::NORMALIZE_ENABLED <= UniformId::LAST_STATE_UNIFORM_BOOL) {
 		uniforms[UniformId::NORMALIZE_ENABLED] = new UniformState<bool>(shaders[ShaderId::MAIN_VERTEX_SHADER], "NORMALIZE_ENABLED", false);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::NORMALIZE_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::NORMALIZE_ENABLED]->setFather(lightingEnabled);
 	
@@ -246,7 +297,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		fogEnabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::FOG_ENABLED] = fogEnabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::FOG_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	
 	UniformState<bool> *texture0Enabled = 0;
@@ -255,7 +309,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		texture0Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::TEXTURE0_ENABLED] = texture0Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE0_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE0_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE_FRAGMENT_SHADER]);
 	uniforms[UniformId::TEXTURE0_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE0_FRAGMENT_SHADER]);
@@ -266,7 +323,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		texture1Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::TEXTURE1_ENABLED] = texture1Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE1_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE1_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE_FRAGMENT_SHADER]);
 	uniforms[UniformId::TEXTURE1_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE1_FRAGMENT_SHADER]);
@@ -277,7 +337,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		texture2Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::TEXTURE2_ENABLED] = texture2Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE2_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE2_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE_FRAGMENT_SHADER]);
 	uniforms[UniformId::TEXTURE2_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::TEXTURE2_FRAGMENT_SHADER]);
@@ -287,7 +350,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		alphaTestEnabled = new UniformState<bool>(shaders[ShaderId::MAIN_FRAGMENT_SHADER], "ALPHA_TEST_ENABLED", false);
 		uniforms[UniformId::ALPHA_TEST_ENABLED] = alphaTestEnabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::ALPHA_TEST_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::ALPHA_TEST_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::ALPHA_TEST_FRAGMENT_SHADER]);
 	
@@ -297,7 +363,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		clipPlane0Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::CLIP_PLANE0_ENABLED] = clipPlane0Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::CLIP_PLANE0_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::CLIP_PLANE0_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_VERTEX_SHADER]);
 	uniforms[UniformId::CLIP_PLANE0_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_FRAGMENT_SHADER]);
@@ -308,7 +377,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		clipPlane1Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::CLIP_PLANE1_ENABLED] = clipPlane1Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::CLIP_PLANE1_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::CLIP_PLANE1_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_VERTEX_SHADER]);
 	uniforms[UniformId::CLIP_PLANE1_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_FRAGMENT_SHADER]);
@@ -319,7 +391,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		clipPlane2Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::CLIP_PLANE2_ENABLED] = clipPlane2Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::CLIP_PLANE2_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::CLIP_PLANE2_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_VERTEX_SHADER]);
 	uniforms[UniformId::CLIP_PLANE2_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_FRAGMENT_SHADER]);
@@ -330,7 +405,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		clipPlane3Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::CLIP_PLANE3_ENABLED] = clipPlane3Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::CLIP_PLANE3_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::CLIP_PLANE3_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_VERTEX_SHADER]);
 	uniforms[UniformId::CLIP_PLANE3_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_FRAGMENT_SHADER]);
@@ -341,7 +419,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		clipPlane4Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::CLIP_PLANE4_ENABLED] = clipPlane4Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::CLIP_PLANE4_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::CLIP_PLANE4_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_VERTEX_SHADER]);
 	uniforms[UniformId::CLIP_PLANE4_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_FRAGMENT_SHADER]);
@@ -352,7 +433,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 		clipPlane5Enabled->addDefineShaderFile(shaders[ShaderId::MAIN_FRAGMENT_SHADER]);
 		uniforms[UniformId::CLIP_PLANE5_ENABLED] = clipPlane5Enabled;
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::CLIP_PLANE5_ENABLED] = new Uniform<bool>(false);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::CLIP_PLANE5_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_VERTEX_SHADER]);
 	uniforms[UniformId::CLIP_PLANE5_ENABLED]->addAdditionalRequiredShaderFile(true, shaders[ShaderId::CLIP_PLANE_FRAGMENT_SHADER]);
@@ -492,7 +576,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE0_ENV_SRC0_RGB && UniformId::TEXTURE0_ENV_SRC0_RGB <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE0_ENV_SRC0_RGB] = new UniformState<GLint>(shaders[ShaderId::TEXTURE0_FRAGMENT_SHADER], "TEXTURE0_ENV_SRC0_RGB", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE0_ENV_SRC0_RGB] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE0_ENV_SRC0_RGB]->setFather(texture0Enabled);
 	
@@ -513,7 +600,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE1_ENV_SRC0_RGB && UniformId::TEXTURE1_ENV_SRC0_RGB <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE1_ENV_SRC0_RGB] = new UniformState<GLint>(shaders[ShaderId::TEXTURE1_FRAGMENT_SHADER], "TEXTURE1_ENV_SRC0_RGB", 1);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE1_ENV_SRC0_RGB] = new Uniform<int>(1);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE1_ENV_SRC0_RGB]->setFather(texture1Enabled);
 	
@@ -534,7 +624,10 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE2_ENV_SRC0_RGB && UniformId::TEXTURE2_ENV_SRC0_RGB <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE2_ENV_SRC0_RGB] = new UniformState<GLint>(shaders[ShaderId::TEXTURE2_FRAGMENT_SHADER], "TEXTURE2_ENV_SRC0_RGB", 2);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE2_ENV_SRC0_RGB] = new Uniform<int>(2);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE2_ENV_SRC0_RGB]->setFather(texture2Enabled);
 	
@@ -618,63 +711,90 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE0_ENV_SRC0_ALPHA && UniformId::TEXTURE0_ENV_SRC0_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE0_ENV_SRC0_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE0_FRAGMENT_SHADER], "TEXTURE0_ENV_SRC0_ALPHA", 0); // TODO: default value
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE0_ENV_SRC0_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE0_ENV_SRC0_ALPHA]->setFather(texture0Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE0_ENV_SRC1_ALPHA && UniformId::TEXTURE0_ENV_SRC1_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE0_ENV_SRC1_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE0_FRAGMENT_SHADER], "TEXTURE0_ENV_SRC1_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE0_ENV_SRC1_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE0_ENV_SRC1_ALPHA]->setFather(texture0Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE0_ENV_SRC2_ALPHA && UniformId::TEXTURE0_ENV_SRC2_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE0_ENV_SRC2_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE0_FRAGMENT_SHADER], "TEXTURE0_ENV_SRC2_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE0_ENV_SRC2_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE0_ENV_SRC2_ALPHA]->setFather(texture0Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE1_ENV_SRC0_ALPHA && UniformId::TEXTURE1_ENV_SRC0_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE1_ENV_SRC0_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE1_FRAGMENT_SHADER], "TEXTURE1_ENV_SRC0_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE1_ENV_SRC0_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE1_ENV_SRC0_ALPHA]->setFather(texture1Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE1_ENV_SRC1_ALPHA && UniformId::TEXTURE1_ENV_SRC1_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE1_ENV_SRC1_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE1_FRAGMENT_SHADER], "TEXTURE1_ENV_SRC1_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE1_ENV_SRC1_ALPHA] = new Uniform<int>(0);
-	}
+#pragma clang diagnostic pop
+    }
 	uniforms[UniformId::TEXTURE1_ENV_SRC1_ALPHA]->setFather(texture1Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE1_ENV_SRC2_ALPHA && UniformId::TEXTURE1_ENV_SRC2_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE1_ENV_SRC2_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE1_FRAGMENT_SHADER], "TEXTURE1_ENV_SRC2_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE1_ENV_SRC2_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE1_ENV_SRC2_ALPHA]->setFather(texture1Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE2_ENV_SRC0_ALPHA && UniformId::TEXTURE2_ENV_SRC0_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE2_ENV_SRC0_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE2_FRAGMENT_SHADER], "TEXTURE2_ENV_SRC0_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE2_ENV_SRC0_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE2_ENV_SRC0_ALPHA]->setFather(texture2Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE2_ENV_SRC1_ALPHA && UniformId::TEXTURE2_ENV_SRC1_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE2_ENV_SRC1_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE2_FRAGMENT_SHADER], "TEXTURE2_ENV_SRC1_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE2_ENV_SRC1_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE2_ENV_SRC1_ALPHA]->setFather(texture2Enabled);
 	
 	if (UniformId::FIRST_STATE_UNIFORM_INT <= UniformId::TEXTURE2_ENV_SRC2_ALPHA && UniformId::TEXTURE2_ENV_SRC2_ALPHA <= UniformId::LAST_STATE_UNIFORM_INT) {
 		uniforms[UniformId::TEXTURE2_ENV_SRC2_ALPHA] = new UniformState<GLint>(shaders[ShaderId::TEXTURE2_FRAGMENT_SHADER], "TEXTURE2_ENV_SRC2_ALPHA", 0);
 	} else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunreachable-code"
 		uniforms[UniformId::TEXTURE2_ENV_SRC2_ALPHA] = new Uniform<int>(0);
+#pragma clang diagnostic pop
 	}
 	uniforms[UniformId::TEXTURE2_ENV_SRC2_ALPHA]->setFather(texture2Enabled);
 	
@@ -925,7 +1045,7 @@ void OpenGLESState::setCurrentProgram()
 			}
 		}
 		if (stateFound) {
-			stateIndex = i;
+			stateIndex = (int)i;
 			break;
 		}
 	}
@@ -954,7 +1074,7 @@ void OpenGLESState::setCurrentProgram()
 		
 		addDefinesToShaderSources(vertexShaderSources, fragmentShaderSources);
 		
-		if (OpenGLESConfig::DEBUG) {
+		if (OpenGLESConfig::IS_DEBUG) {
 			LOG_MESSAGE("Using shader files:");
 			for (size_t i = 0; i < vertexShaderSources.size(); i++)
 			{
@@ -1456,5 +1576,5 @@ void OpenGLESState::setTextureMatrix(int index, bool enabled)
 
 int OpenGLESState::getCachedShaderAmount()
 {
-	return stateShaderPrograms.size();
+	return (int)stateShaderPrograms.size();
 }

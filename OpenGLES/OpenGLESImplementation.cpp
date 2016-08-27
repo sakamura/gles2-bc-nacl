@@ -16,6 +16,7 @@
 
 #include "OpenGLESImplementation.h"
 #include "OpenGLESUtil.h"
+#include <stdlib.h>
 
 using namespace OpenGLES;
 
