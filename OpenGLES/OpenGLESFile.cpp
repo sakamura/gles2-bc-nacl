@@ -17,12 +17,28 @@
 #include "OpenGLESFile.h"
 #include "Util.h"
 #include <stdio.h>
+#include "CoreFoundation/CoreFoundation.h"
 
 using namespace OpenGLES;
 
+static const char* const getShadersPath()
+{
+    CFBundleRef mainBundle = CFBundleGetMainBundle();
+    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
+    static char path[PATH_MAX];
+    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
+    {
+        return "";
+    }
+    CFRelease(resourcesURL);
+
+    return strcat(path, "/shaders/");
+}
+static const char* const shadersPath = getShadersPath();
+
 OpenGLESFile::OpenGLESFile(std::string n) : name()
 {
-	name.assign("gles2-bc/Sources/OpenGLES/OpenGLES20/shaders/");
+	name.assign(shadersPath);
 	name.append(n);
 }
 

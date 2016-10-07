@@ -1024,7 +1024,7 @@ void OpenGLES11Context::glBlendEquation ( GLenum mode )
 	::glBlendEquationOES(mode);
 	CHECK_GL_ERROR(glGetError(), __FILE__, __LINE__);
 #else
-	Util::logMessage(__FILE__, __LINE__, "WARNING: No effect in OpenGL ES 1.x");
+	LOG_DEBUG_MESSAGE(__FILE__, __LINE__, "WARNING: No effect in OpenGL ES 1.x");
 #endif
 }
 

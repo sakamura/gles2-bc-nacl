@@ -144,6 +144,7 @@ GLuint ShaderProgram::createProgram(Shader *vertexShader, Shader *fragmentShader
 			id = AttributeId::TEXCOORD2;
 		} else {
 			LOG_MESSAGE(__FILE__, __LINE__, OpenGLESString("ERROR: Missing ") + attributeName);
+			free(attributeName);
 			return 0;
 		}
 		
@@ -182,6 +183,7 @@ GLuint ShaderProgram::createProgram(Shader *vertexShader, Shader *fragmentShader
 		
 		LOG_DEBUG_MESSAGE(OpenGLESString(attributeName) + ": type " + typeString + " location: " + attributeLocation);
 #endif
+		free(attributeName);
 	}
 	
 	LOG_DEBUG_MESSAGE("Uniforms");
@@ -420,8 +422,11 @@ GLuint ShaderProgram::createProgram(Shader *vertexShader, Shader *fragmentShader
 			id = UniformId::CLIP_PLANE4_EQUATION;
 		} else if (strcmp(uniformName,"u_clipPlane5Equation") == 0) {
 			id = UniformId::CLIP_PLANE5_EQUATION;
+        } else if (strcmp(uniformName,"u_color") == 0) {
+            id = UniformId::COLOR;
 		} else {
 			LOG_MESSAGE(__FILE__, __LINE__, OpenGLESString("ERROR: Missing ") + uniformName);
+			free(uniformName);
 			return 0;
 		}
 		
@@ -490,6 +495,7 @@ GLuint ShaderProgram::createProgram(Shader *vertexShader, Shader *fragmentShader
 		
 		LOG_DEBUG_MESSAGE(OpenGLESString(uniformName) + ": type " + typeString + " location: " + uniformLocation);
 #endif
+		free(uniformName);
 	}
 	
 	LOG_DEBUG_MESSAGE("\n");
@@ -534,6 +540,13 @@ void ShaderProgram::validate()
 			free(infoLog);
 		}
 	}
+}
+
+bool ShaderProgram::isCurrent()
+{
+    GLuint currentProgram;
+    glGetIntegerv(GL_CURRENT_PROGRAM, (GLint*) &currentProgram);
+    return program == currentProgram;
 }
 
 std::vector<AttributeSimple *>* ShaderProgram::getActiveAttributes()

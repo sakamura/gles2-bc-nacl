@@ -5,8 +5,6 @@
 	precision mediump float;
 #endif
 
-#define GL_FASTEST 0x1101
-#define GL_NICEST 0x1102
 
 #if !defined(TEXTURE0_ENABLED)
 	#define TEXTURE0_ENABLED -1
@@ -66,6 +64,7 @@ uniform vec3 u_fogColor;
 uniform int u_fogHint;
 uniform bool u_alphaTestEnabled;
 uniform bool u_lightingEnabled;
+uniform vec4 u_color;
 
 // Varyings
 varying vec4 v_frontColor;
@@ -96,12 +95,12 @@ void main()
 #if LIGHTING_ENABLED == 1
 	calcLighting(color);
 #elif LIGHTING_ENABLED == 0
-	color = v_frontColor;
+	color = u_color; //v_frontColor;
 #else
 	if (u_lightingEnabled) {
 		calcLighting(color);
 	} else {
-		color = v_frontColor;
+		color = u_color; ///v_frontColor;
 	}
 #endif
 	
@@ -143,5 +142,16 @@ void main()
 	#endif
 #endif
 	
+    
+    
+#if TEXTURE0_ENABLED != 0 || TEXTURE1_ENABLED != 0 || TEXTURE2_ENABLED != 0
 	gl_FragColor = color;
+#else
+#if LIGHTING_ENABLED == 1
+    gl_FragColor = color * u_color;
+#elif LIGHTING_ENABLED == 0
+	gl_FragColor = color;
+#endif
+#endif
+
 }

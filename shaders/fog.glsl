@@ -1,7 +1,4 @@
 
-#define GL_LINEAR 0x2601
-#define GL_EXP 0x0800
-#define GL_EXP2 0x0801
 
 #if !defined(FOG_MODE)
 	#define FOG_MODE -1

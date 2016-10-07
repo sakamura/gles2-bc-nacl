@@ -933,6 +933,8 @@ void OpenGLESState::init(OpenGLESImplementation *implementation)
 	uniforms[UniformId::TEXTURE0_MATRIX] = new Uniform<Matrix4x4<GLfloat> >();
 	uniforms[UniformId::TEXTURE1_MATRIX] = new Uniform<Matrix4x4<GLfloat> >();
 	uniforms[UniformId::TEXTURE2_MATRIX] = new Uniform<Matrix4x4<GLfloat> >();
+    
+    uniforms[UniformId::COLOR] = new Uniform<Vector4<GLfloat> >(1.0f, 1.0f, 1.0f, 1.0f);
 }
 
 void OpenGLESState::setActiveUniformLocations( std::vector<UniformSimple *> *activeUniforms )
@@ -1094,7 +1096,7 @@ void OpenGLESState::setCurrentProgram()
 		stateShaderPrograms.push_back(currentStateShaderProgram);
 	}
 	
-	if (currentStateShaderProgram != oldStateShaderProgram) {
+	if (currentStateShaderProgram != oldStateShaderProgram || currentStateShaderProgram->shaderProgram->isCurrent() == false ) {
 		currentStateShaderProgram->shaderProgram->use();
 		setActiveUniformLocations(currentStateShaderProgram->shaderProgram->getActiveUniforms());
 		setActiveAttributeLocations(currentStateShaderProgram->shaderProgram->getActiveAttributes());
@@ -1578,3 +1580,14 @@ int OpenGLESState::getCachedShaderAmount()
 {
 	return (int)stateShaderPrograms.size();
 }
+
+void OpenGLESState::setUniformColor(Vector4<GLfloat> vec )
+{
+	static_cast<Uniform<Vector4<GLfloat> > * >(uniforms[UniformId::COLOR])->setValue(vec);
+}
+
+void OpenGLESState::getUniformColor(Vector4<GLfloat>& vec )
+{
+    vec = static_cast<Uniform<Vector4<GLfloat> > * >(uniforms[UniformId::COLOR])->getValue();
+}
+

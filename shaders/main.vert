@@ -1,5 +1,3 @@
-#define GL_FASTEST 0x1101
-#define GL_NICEST 0x1102
 
 #if !defined(LIGHTING_ENABLED)
 	#define LIGHTING_ENABLED -1

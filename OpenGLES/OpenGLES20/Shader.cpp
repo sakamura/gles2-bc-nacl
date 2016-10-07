@@ -14,12 +14,13 @@
  limitations under the License.
  */
 
+#include <cstring>
+#include <cstdlib>
 #include "Shader.h"
 #include "OpenGLESUtil.h"
 #include "OpenGLESConfig.h"
 #include "ShaderSource.h"
 #include "ShaderFile.h"
-#include <stdlib.h>
 
 using namespace OpenGLES::OpenGLES2;
 
